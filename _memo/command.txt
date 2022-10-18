@@ -1,0 +1,30 @@
+https://zenn.dev/akakuro/articles/2426098256785b
+dockerでgo開発環境構築
+
+
+# コンテナの作成
+docker-compose build
+# コンテナの立ち上げ
+docker-compose up -d
+# 実行
+docker-compose exec goapp go run /src/Chapter9/9.1/main.go
+
+# コンテナを閉じる
+docker-compose down
+
+docker-compose exec goapp /bin/sh
+
+##############################
+#初期設定やビルド
+##############################
+# go.modファイルを作成します。
+docker-compose exec goapp go mod init github.com/akakuro43/go-app
+docker-compose exec goapp go mod tidy
+# パッケージのインストールと実行確認
+docker-compose exec goapp go get golang.org/x/tools/cmd/goimports
+# インストールしたパッケージの動作も確認
+docker-compose exec goapp goimports ./hello/main.go
+# ビルド
+docker-compose exec goapp go build -o app_hello hello/main.go
+# 実行
+docker-compose exec goapp ./app_hello
