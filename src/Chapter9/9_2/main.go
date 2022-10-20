@@ -23,16 +23,23 @@ func Input()(stairs int){
 	return
 }
 
-func countWays(n int)int{
-	// fmt.Println("-------------------")
-	// fmt.Println("n=",n)
-	if n<0{
-		return 0
+type Point struct{
+	y int
+	x int
+}
+func NewPoint(x,y int)*Point{
+	return &Point{x:x,y:y}
+}
+
+func getPath(x,y int,path []*Point)bool{
+	p := NewPoint(x,y)
+	path = append(path, p)
+	if x==0 && y ==0{
+		return true
 	}
-	if n == 0{
-		return 1
-	}
-	return countWays(n-1)+countWays(n-2)+countWays(n-3)
+	// success := false
+
+
 }
 
 var memo [11]int
