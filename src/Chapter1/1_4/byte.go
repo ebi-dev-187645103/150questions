@@ -8,14 +8,14 @@ import (
 )
 
 func InsertEach(s string, t string) string {
-    var b bytes.Buffer
-    for _, r := range s {
-        if b.Len() > 0 {
-            b.WriteString(t)
-        }
-        b.WriteRune(r)
-    }
-    return b.String()
+	var b bytes.Buffer
+	for _, r := range s {
+		if b.Len() > 0 {
+			b.WriteString(t)
+		}
+		b.WriteRune(r)
+	}
+	return b.String()
 }
 
 func InsertEach2(s string, t string) string {
